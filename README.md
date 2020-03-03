@@ -48,27 +48,27 @@ Firstly, we will create an App with PowerApps so that we can input data of sites
 
 1. Login to [azure portal](https://portal.azure.com) and create an Azure SQL, and then create the Sites table with SQL script above.
 
-![Image of Site App - PowerApps](./img/azureportal-sql.png)
+![Image of Site App - PowerApps](./img/azureportal-sql.PNG)
 
 
 2. Click the **PowerApps (preview)** and click the button of "Create an app". 
 
-![Image of Site App - PowerApps](./img/azureportal-sql-powerapps.png)
+![Image of Site App - PowerApps](./img/azureportal-sql-powerapps.PNG)
 
 3. Input the correct informaton of the **Sites** table and App name. Click the button of "Create". 
 
-![Image of Site App - PowerApps](./img/azureportal-sql-powerapps-create.png)
+![Image of Site App - PowerApps](./img/azureportal-sql-powerapps-create.PNG)
 
 4. After a few seconds, A PowerApp created, and use it to input some sample data. 
 
-![Image of Site App - PowerApps](./img/sites-powerapps-2.png)
+![Image of Site App - PowerApps](./img/sites-powerapps-2.PNG)
 
-![Image of Site App - PowerApps](./img/sites-data.png)
+![Image of Site App - PowerApps](./img/sites-data.PNG)
 
 ## User Permission App - PowerApps
 1. Input the correct informaton of the **UserPermission** table and App name. Click the button of "Create". 
 
-![Image of Site App - PowerApps](./img/azureportal-sql-powerapps-create.png)
+![Image of Site App - PowerApps](./img/azureportal-sql-powerapps-create.PNG)
 
 2. Now you can manage the user permission with this PowerApp to add or modify the records as below.
 
@@ -86,7 +86,7 @@ Firstly, we will create an App with PowerApps so that we can input data of sites
 
 ### 3. The table shows the data of the table
 
-![Image of Site App - PowerApps](./img/sites-powerapps-3.png)
+![Image of Site App - PowerApps](./img/sites-powerapps-3.PNG)
 
 ### 4. **Implement the role based security**
 
@@ -101,7 +101,7 @@ The expression **User().Email** can get the current user's email. And save it in
 
 Use variable **MyEmail** to filter the table **[dbo].[UserPermission]** and save the results of **SiteID** collection into variable **MySite**.
 
-![Image of Site App - PowerApps](./img/sites-powerapps-4.png)
+![Image of Site App - PowerApps](./img/sites-powerapps-4.PNG)
 
 Change the table items with the code below:
 ```
@@ -109,7 +109,7 @@ Sort(Filter('[dbo].[Sites]', SiteID in MySite), SiteID, SortOrder.Descending)
 ```
 It filters the data of **Sites** table with **MySite** collection
 
-![Image of Site App - PowerApps](./img/sites-powerapps-5.png)
+![Image of Site App - PowerApps](./img/sites-powerapps-5.PNG)
 
 Now the role basd security is applied.
 
