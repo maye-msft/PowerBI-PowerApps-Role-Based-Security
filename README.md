@@ -128,3 +128,53 @@ And set **Duration** as 5000 and **Repeat** as true. Then save the app and publi
 ![Image of Site App - PowerApps](./img/sites-powerapps-demo.gif)
 
 The SiteView.msapp is [here](./SiteView.msapp).
+
+## Site Report of Power BI
+
+Here is a document from Power BI about row-level security.
+
+https://docs.microsoft.com/en-us/power-bi/service-admin-rls
+
+We will follow this document to complete the report.
+
+Open Power BI Desktop and connect to the Azure SQL.
+
+### 1. Merge the Sites and UserPermission table
+
+![Image of Site Report - PowerBI](./img/powerbi-merge.PNG)
+
+And We will have a new data as below. we can give a name to it such as "SitesAndUsrPerm".
+
+![Image of Site Report - PowerBI](./img/powerbi-merge-2.PNG)
+
+### 2. Crate a Report and Role
+
+First we can create a simple report with a table as below
+
+![Image of Site Report - PowerBI](./img/powerbi-report-1.PNG)
+
+And then we need to create a role which can be named as "MySite" and it is a filter on the new merged table "UserSiteMapping". the expression is 
+[UserSiteMapping.UserEmail] = userprincipalname(). 
+It select the records based on the user email.
+
+![Image of Site Report - PowerBI](./img/powerbi-create-role.PNG)
+
+Turn on the role of "MySite" in Power BI Desktop.
+
+![Image of Site Report - PowerBI](./img/powerbi-view-as-role.PNG)
+
+It only shows "SiteA" and "SiteB", as "SiteC" is not allow to access.
+
+![Image of Site Report - PowerBI](./img/powerbi-report-2.PNG)
+
+### 3. Publish Report to PowerBI.com
+
+After publishing the report to PowerBI.com. you can add user under the role.
+
+![Image of Site Report - PowerBI](./img/powerbi-security.PNG)
+
+![Image of Site Report - PowerBI](./img/powerbi-security-2.PNG)
+
+And then the user with the roles and have releated records in the table of "UserPermission". He will see correct records.
+
+The sites.pbix is [here](./sites.pbix).
